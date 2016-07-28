@@ -41,6 +41,7 @@ override_dh_auto_build:
 	@grep -R DEB_HOST_ARCH_CPU .
 	@grep -R TARGET_ARCH .
 	@grep -R FORTIFY_SOURCE .
+	@grep -R CPPFLAGS .
 	@echo "=== make"
 	$(MAKE)
 	echo "=== running install"
