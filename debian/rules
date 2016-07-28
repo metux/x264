@@ -28,18 +28,18 @@ override_dh_auto_build:
 	echo "=== configure"
 	LDFLAGS="$(LDFLAGS)" ./configure $(static_confflags) \
 	   || ( tail -v -n +0 config.log config.log ; exit 1 )
-	echo "=== running make"
-	pwd
-	grep -R i386 .
-	echo "=== env"
-	env | grep i386
-	echo "=== arch"
-	grep -R DEB_BUILD_ARCH_CPU .
-	grep -R DEB_HOST_ARCH .
-	grep -R DEB_BUILD_ARCH .
-	grep -R DEB_HOST_ARCH_CPU .
-	grep -R TARGET_ARCH .
-	echo "=== make
+	@echo "=== running make"
+	@pwd
+	@grep -R i386 .
+	@echo "=== env"
+	@env | grep i386
+	@echo "=== arch"
+	@grep -R DEB_BUILD_ARCH_CPU .
+	@grep -R DEB_HOST_ARCH .
+	@grep -R DEB_BUILD_ARCH .
+	@grep -R DEB_HOST_ARCH_CPU .
+	@grep -R TARGET_ARCH .
+	@echo "=== make"
 	$(MAKE)
 	echo "=== running install"
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/install/static
