@@ -236,6 +236,7 @@ ifeq ($(COMPILER),CL)
 else
 	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS) $(SRCCLI) $(SRCSO)), $(CC) $(CFLAGS) $(SRC) $(DEPMT) $(SRC:$(SRCPATH)/%.c=%.o) $(DEPMM) 1>> .depend;)
 endif
+	@echo "DEPEND DONE"
 
 config.mak:
 	./configure
@@ -263,6 +264,7 @@ fprofiled:
 	@echo 'i.e. YUV with resolution in the filename, y4m, or avisynth.'
 else
 fprofiled:
+	echo "=== FPROFILED ==="
 	$(MAKE) clean
 	$(MAKE) x264$(EXE) CFLAGS="$(CFLAGS) $(PROF_GEN_CC)" LDFLAGS="$(LDFLAGS) $(PROF_GEN_LD)"
 	$(foreach V, $(VIDS), $(foreach I, 0 1 2 3 4 5 6 7, ./x264$(EXE) $(OPT$I) --threads 1 $(V) -o $(DEVNULL) ;))
