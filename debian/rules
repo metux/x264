@@ -13,6 +13,7 @@ DH_INSTALL_FILES = debian/$(libx264N).install \
                    debian/libx264-dev.install
 
 %:
+	echo "CFLAGS=$(CFLAGS)"
 	dh $@ --parallel --with autotools_dev
 
 .PHONY: debian/control
