@@ -25,9 +25,12 @@ $(DH_INSTALL_FILES):
 
 override_dh_auto_build:
 	# Build static lib
+	echo "=== configure"
 	LDFLAGS="$(LDFLAGS)" ./configure $(static_confflags) \
 	   || ( tail -v -n +0 config.log config.log ; exit 1 )
+	echo "=== running make"
 	$(MAKE)
+	echo "=== running install"
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/install/static
 	$(MAKE) distclean
 	# Build shared lib
