@@ -31,6 +31,9 @@ override_dh_auto_build:
 	echo "=== running make"
 	pwd
 	grep -R i386 .
+	echo "=== env"
+	env | grep i386
+	echo "=== make"
 	$(MAKE)
 	echo "=== running install"
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/install/static
