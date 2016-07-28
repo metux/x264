@@ -226,10 +226,15 @@ $(OBJS) $(OBJASM) $(OBJSO) $(OBJCLI) $(OBJCHK) $(OBJEXAMPLE): .depend
 .depend: config.mak
 	@rm -f .depend
 	@echo 'dependency file generation...'
+	@echo "CC=$(CC")
+	@echo "CFLAGS=$(CFLAGS)"
+	@echo "SRC=$(SRC)"
+	@echo "DEPMT=$(DEPMT)"
+	@echo "DEPMM=$(DEPMM)"
 ifeq ($(COMPILER),CL)
 	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS) $(SRCCLI) $(SRCSO)), $(SRCPATH)/tools/msvsdepend.sh "$(CC)" "$(CFLAGS)" "$(SRC)" "$(SRC:$(SRCPATH)/%.c=%.o)" 1>> .depend;)
 else
-	$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS) $(SRCCLI) $(SRCSO)), $(CC) $(CFLAGS) $(SRC) $(DEPMT) $(SRC:$(SRCPATH)/%.c=%.o) $(DEPMM) 1>> .depend;)
+	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS) $(SRCCLI) $(SRCSO)), $(CC) $(CFLAGS) $(SRC) $(DEPMT) $(SRC:$(SRCPATH)/%.c=%.o) $(DEPMM) 1>> .depend;)
 endif
 
 config.mak:
