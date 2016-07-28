@@ -47,7 +47,7 @@ override_dh_auto_build:
 	@echo " ... CFLAGS=$(CFLAGS)"
 	@echo " ... CPPFLAGS=$(CPPFLAGS)"
 	@echo " ... CXXFLAGS=$(CXXFLAGS)"
-	$(MAKE) --debug=abvim
+	$(MAKE) -d
 	echo "=== running install"
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/install/static
 	$(MAKE) distclean
