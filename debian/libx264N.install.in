@@ -1,2 +1,2 @@
-shared/usr/lib/@DEB_HOST_MULTIARCH@/libx264.so.*     usr/lib/@DEB_HOST_MULTIARCH@
-shared/usr/lib/@DEB_HOST_MULTIARCH@/x264-10bit/libx264.so.*     usr/lib/@DEB_HOST_MULTIARCH@/x264-10bit
+shared/usr/lib/libx264.so.*     usr/lib
+shared/usr/lib/x264-10bit/libx264.so.*     usr/lib/x264-10bit
