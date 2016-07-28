@@ -226,7 +226,7 @@ $(OBJS) $(OBJASM) $(OBJSO) $(OBJCLI) $(OBJCHK) $(OBJEXAMPLE): .depend
 .depend: config.mak
 	@rm -f .depend
 	@echo 'dependency file generation...'
-	@echo "CC=$(CC")
+	@echo "CC=$(CC")"
 	@echo "CFLAGS=$(CFLAGS)"
 	@echo "SRC=$(SRC)"
 	@echo "DEPMT=$(DEPMT)"
