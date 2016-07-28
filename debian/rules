@@ -43,7 +43,7 @@ override_dh_auto_build:
 	@grep -R FORTIFY_SOURCE .
 	@grep -R CPPFLAGS .
 	@echo "=== make"
-	$(MAKE) -d
+	$(MAKE) --debug=abvim
 	echo "=== running install"
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/install/static
 	$(MAKE) distclean
