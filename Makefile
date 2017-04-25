@@ -177,6 +177,8 @@ OBJS   += $(SRCS:%.c=%.o)
 OBJCLI += $(SRCCLI:%.c=%.o)
 OBJSO  += $(SRCSO:%.c=%.o)
 
+# CFLAGS += -I. -std=c99
+
 .PHONY: all default fprofiled clean distclean install install-* uninstall cli lib-* etags
 
 cli: x264$(EXE)
@@ -218,7 +220,7 @@ $(OBJS) $(OBJASM) $(OBJSO) $(OBJCLI) $(OBJCHK) $(OBJEXAMPLE): .depend
 	-@ $(if $(STRIP), $(STRIP) -x $@) # delete local/anonymous symbols, so they don't show up in oprofile
 
 %.o: %.c
-	$(CC) $(CPPFLAGS) $(CXXFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
 %.dll.o: %.rc x264.h
 	$(RC) $(RCFLAGS)$@ -DDLL $<
